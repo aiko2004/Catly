@@ -30,7 +30,7 @@ app.post('/create', async (req, res) => {
     if (format.test(req.body.key)) {
         options = {
             alert: req.body ? true : false,
-            message: `Key must not contain special characters`,
+            message: `Key must not contain special character`,
             title: "Creation failed",
             icon: "error",
             url: URL
@@ -39,9 +39,9 @@ app.post('/create', async (req, res) => {
         let createnew = await createNewURl(req.body.url, req.body.key)
         options = {
             alert: req.body ? true : false,
-            message: createnew == 401 ? `${req.body.key} already exists!` : `Your url: ${URL}/${req.body.key}`,
-            title: createnew == 401 ? "Creation failed" : "Successfully created!",
-            icon: createnew == 200 ? "success" : "error",
+            message: createnew == 401 ? `${req.body.key} already exist!` : `Your url: ${URL}/${req.body.key}`,
+            title: createnew == 401 ? "Failed to create" : "Successfully created!",
+            icon: createnew == 200 ? "Success" : "Error",
             url: URL
         }
     }
